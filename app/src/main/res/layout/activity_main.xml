@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+   <EditText
+       android:id="@+id/edit_text_to_get"
+       android:layout_width="300dp"
+       android:layout_height="60dp"
+       android:textColor="@android:color/black"
+       android:textSize="18sp"/>
+
+
+    <Button
+        android:id="@+id/button_to_press"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:text="Press me!"/>
+
+<TextView
+    android:id="@+id/text_to_show"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textColor="@android:color/black"
+    android:textSize="25sp"
+    tools:text="test"
+    tools:visibility="visible"/>
+
+</LinearLayout>
