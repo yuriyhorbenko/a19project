@@ -27,21 +27,22 @@ public class MainActivity extends AppCompatActivity {
         textObjToSetup = findViewById(R.id.text_to_show);
 
 
-
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String text_to_use = textObj.getText().toString();
-                if(text_to_use.length()>0) {
+                if (text_to_use.length() > 0) {
                     SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(ctx);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putString("text_to_save", text_to_use);
                     editor.commit();
 
-                    Intent myIntent = new Intent(ctx, DescriptionActivity.class);
-                    //myIntent.putExtra("text_to_get",text_to_use);
-                    startActivity(myIntent);
+
                 }
+
+                Intent myIntent = new Intent(ctx, FileActivity.class);
+                //myIntent.putExtra("text_to_get",text_to_use);
+                startActivity(myIntent);
 //                String text_to_use = textObj.getText().toString();
 //                if(text_to_use.length()>0){
 //                    textObjToSetup.setText(text_to_use);
