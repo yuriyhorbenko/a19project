@@ -28,10 +28,10 @@ public class HttpActivity extends AppCompatActivity {
         Thread thread1 = new Thread(new Runnable() {
             @Override
             public void run() {
-                HttpGet httppost = new HttpGet("https://auto.ria.com/newauto_blocks/marka/models?lang_id=2&category_id=1&marka_id=9");
+                HttpGet httppget = new HttpGet("https://auto.ria.com/newauto_blocks/marka/models?lang_id=2&category_id=1&marka_id=9");
                 HttpClient httpclient = new DefaultHttpClient();
                 try {
-                    HttpResponse response = httpclient.execute(httppost);
+                    HttpResponse response = httpclient.execute(httppget);
                     int status = response.getStatusLine().getStatusCode();
 
                     if (status == 200) { // ok

@@ -1,6 +1,7 @@
 package com.example.my19;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -46,10 +48,10 @@ public class FileActivity extends AppCompatActivity {
     void writeFile(String text_to_save) {
         try {
             // open thread to write
+
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(openFileOutput(FILENAME, MODE_PRIVATE)));
             bw.write(text_to_save);
             bw.close();
-
             Toast.makeText(this, "Текст сохранен удачно!", Toast.LENGTH_LONG).show();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -60,10 +62,12 @@ public class FileActivity extends AppCompatActivity {
 
     void readFile() {
         try {
+
+            File file = getFileStreamPath(FILENAME);
+            Log.d("okok","file path ="+file.getAbsolutePath());
             //open thread to read
             BufferedReader br = new BufferedReader(new InputStreamReader(openFileInput(FILENAME)));
             String str = "";
-
             while ((str = br.readLine()) != null) {
                 text_lable.setText(str);
             }

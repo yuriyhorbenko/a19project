@@ -42,11 +42,11 @@ public class DatabaseActivity extends AppCompatActivity {
                 }
             }
         });
-        readData(dbHelper);
+        readData();
     }
 
 
-    public void readData(DBHelper dbHelper) {
+    public void readData() {
         Cursor c = db.query("mytable", null, null, null, null, null, null);
 
         // ставим позицию курсора на первую строку выборки
@@ -58,10 +58,11 @@ public class DatabaseActivity extends AppCompatActivity {
             int itemValueColIndex = c.getColumnIndex("item_value");
             do {
 
-                Integer index_value = c.getInt(idColIndex);
+                int index_value = c.getInt(idColIndex);
                 String name_value = c.getString(nameColIndex);
                 String item_value = c.getString(itemValueColIndex);
                 // получаем значения по номерам столбцов и пишем все в лог
+                text_lable.setText(item_value);
                 Log.d("okok",
                         "ID = " + index_value +
                                 ", name = " + name_value +
@@ -73,7 +74,6 @@ public class DatabaseActivity extends AppCompatActivity {
             Log.d("okok", "0 rows");
         }
         c.close();
-
     }
 
 

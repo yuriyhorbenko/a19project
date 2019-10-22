@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
                 }
 
-                Intent myIntent = new Intent(ctx, FileActivity.class);
+                Intent myIntent = new Intent(ctx, HttpActivity.class);
                 //myIntent.putExtra("text_to_get",text_to_use);
                 startActivity(myIntent);
 //                String text_to_use = textObj.getText().toString();
