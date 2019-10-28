@@ -5,53 +5,55 @@ import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.util.EntityUtils;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public class HttpActivity extends AppCompatActivity {
+    private static final String USER_AGENT = "Mozilla/5.0";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_http);
-
-
         Thread thread1 = new Thread(new Runnable() {
             @Override
             public void run() {
-                HttpGet httppget = new HttpGet("https://auto.ria.com/newauto_blocks/marka/models?lang_id=2&category_id=1&marka_id=9");
-                HttpClient httpclient = new DefaultHttpClient();
+
                 try {
-                    HttpResponse response = httpclient.execute(httppget);
-                    int status = response.getStatusLine().getStatusCode();
+                    URL obj = new URL("https://auto.ria.com/newauto_blocks/marka/models?lang_id=2&category_id=1&marka_id=9");
+                    HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+                    con.setRequestMethod("GET");
+                    con.setRequestProperty("User-Agent", USER_AGENT);
+                    int responseCode = con.getResponseCode();
+                    System.out.println("GET Response Code :: " + responseCode);
+                    if (responseCode == HttpURLConnection.HTTP_OK) { // success
+                        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+                        String inputLine;
+                        StringBuffer response = new StringBuffer();
 
-                    if (status == 200) { // ok
-                        HttpEntity entity = response.getEntity();
-                        String data = EntityUtils.toString(entity);
-                        JSONObject jsonobj = new JSONObject(data);
-                        JSONArray marka_arr = jsonobj.getJSONArray("models");
-                        Log.d("okok", "jsonobj  =" + jsonobj);
-                        Log.d("okok", "marka_arr  =" + marka_arr);
+                        while ((inputLine = in.readLine()) != null) {
+                            response.append(inputLine);
+                        }
+                        in.close();
+
+                        // print result
+                        Log.d("okok", response.toString());
+                    } else {
+                        Log.d("okok", "GET request not worked");
                     }
-
-
-                } catch (IOException e) {
+                } catch (java.net.MalformedURLException e) {
                     e.printStackTrace();
-                } catch (JSONException e) {
-                    e.printStackTrace();
+                } catch (java.net.ProtocolException e1) {
+                    e1.printStackTrace();
+                } catch (java.io.IOException e2) {
+                    e2.printStackTrace();
                 }
             }
         });
 
         thread1.start();
+
     }
 }
