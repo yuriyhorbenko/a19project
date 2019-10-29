@@ -18,6 +18,8 @@ public class HttpActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_http);
+        Log.d(TAG, "HttpActivity: onCreate()");
+
         Thread thread1 = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -62,36 +64,37 @@ public class HttpActivity extends AppCompatActivity {
     @Override
     protected void onRestart() {
         super.onRestart();
-        Log.d(TAG, "MainActivity: onRestart()");
+        Log.d(TAG, "HttpActivity: onRestart()");
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        Log.d(TAG, "MainActivity: onStart()");
+        Log.d(TAG, "HttpActivity: onStart()");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Log.d(TAG, "MainActivity: onResume()");
+
+        Log.d(TAG, "HttpActivity: onResume()");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Log.d(TAG, "MainActivity: onPause()");
+        Log.d(TAG, "HttpActivity: onPause()");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        Log.d(TAG, "MainActivity: onStop()");
+        Log.d(TAG, "HttpActivity: onStop()");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.d(TAG, "MainActivity: onDestroy()");
+        Log.d(TAG, "HttpActivity: onDestroy()");
     }
 }
