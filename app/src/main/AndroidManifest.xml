@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".HttpActivity"></activity>
+        <activity android:name=".InflaterActivity"></activity>
+        <activity android:name=".ListViewActivity" />
+        <activity android:name=".HttpActivity" />
         <activity android:name=".DatabaseActivity" />
         <activity android:name=".FileActivity" />
         <activity android:name=".DescriptionActivity" />
