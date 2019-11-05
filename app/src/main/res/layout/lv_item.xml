@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal">
 
     <CheckBox
@@ -23,10 +24,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:text=""
+            tools:text="description"
             android:textSize="20sp"/>
 
         <TextView
             android:id="@+id/tvPrice"
+            tools:text="100000"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"

@@ -25,10 +25,10 @@ public class GridViewActivity extends AppCompatActivity {
     private void adjustGridView() {
         //gvMain.setNumColumns(3);
 
-//        gvMain.setNumColumns(GridView.AUTO_FIT);
-//        gvMain.setColumnWidth(80);
-//        gvMain.setVerticalSpacing(5);
-//        gvMain.setHorizontalSpacing(5);
-        // gvMain.setStretchMode(GridView.NO_STRETCH);
+        gvMain.setNumColumns(GridView.AUTO_FIT);
+        gvMain.setColumnWidth(180);
+        gvMain.setVerticalSpacing(5);
+        gvMain.setHorizontalSpacing(5);
+        gvMain.setStretchMode(GridView.STRETCH_SPACING_UNIFORM);
     }
 }
