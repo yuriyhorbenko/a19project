@@ -65,7 +65,8 @@ public class ShopAdapter extends BaseAdapter {
 
         // заполняем View в пункте списка данными из товаров: наименование, цена
         // и картинка
-        ((TextView) view.findViewById(R.id.tvDescr)).setText(p.name);
+        TextView tvDescr =  view.findViewById(R.id.tvDescr);
+        tvDescr.setText(p.name);
         ((TextView) view.findViewById(R.id.tvPrice)).setText(p.price + "");
         ((ImageView) view.findViewById(R.id.ivImage)).setImageResource(p.image);
 
