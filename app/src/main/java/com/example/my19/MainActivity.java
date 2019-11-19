@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
                 }
 
-                Intent myIntent = new Intent(ctx, FragmentContainerActivity.class);
+                Intent myIntent = new Intent(ctx, AddFragmentActivity.class);
                 //myIntent.putExtra("text_to_get",text_to_use);
                 startActivity(myIntent);
 //                String text_to_use = textObj.getText().toString();
