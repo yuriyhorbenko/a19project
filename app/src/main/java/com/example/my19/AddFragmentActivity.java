@@ -10,17 +10,18 @@ import androidx.fragment.app.FragmentTransaction;
 
 public class AddFragmentActivity extends AppCompatActivity implements Fragment1.OnFragmentInteractionListener, Fragment2.OnFragmentInteractionListener {
 
-        final int MENU_COLOR_RED = 1;      final int MENU_COLOR_GREEN = 2;
+    final int MENU_COLOR_RED = 1;
+    final int MENU_COLOR_GREEN = 2;
     final int MENU_COLOR_BLUE = 3;
-int i = 0;
-Button btnAdd;
+    int i = 0;
+    Button btnAdd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_fragment);
 
-         btnAdd = findViewById(R.id.btnAdd);
+        btnAdd = findViewById(R.id.btnAdd);
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -38,7 +39,7 @@ Button btnAdd;
             }
         });
 
-       // registerForContextMenu(btnAdd);
+        // registerForContextMenu(btnAdd);
     }
 
     @Override
@@ -86,7 +87,6 @@ Button btnAdd;
 //
 //    @Override
 //    public boolean onContextItemSelected(MenuItem item) {
-//        // TODO Auto-generated method stub
 //        switch (item.getItemId()) {
 //            // пункты меню для tvColor
 //            case MENU_COLOR_RED:
@@ -101,5 +101,30 @@ Button btnAdd;
 //
 //        }
 //        return super.onContextItemSelected(item);
+//    }
+
+//    private void httpCall() {
+//        OkHttpClient client = new OkHttpClient();
+//
+//        Request request = new Request.Builder()
+//                .url("https://auto.ria.com/newauto_blocks/marka/models?lang_id=2&category_id=1&marka_id=9")
+//                .build();
+//
+//
+//        client.newCall(request).enqueue(new Callback() {
+//            @Override
+//            public void onFailure(Call call, IOException e) {
+//                e.printStackTrace();
+//            }
+//
+//            @Override
+//            public void onResponse(Call call, final Response response) throws IOException {
+//                if (!response.isSuccessful()) {
+//                    throw new IOException("Unexpected code " + response);
+//                } else {
+//                    // do something wih the result
+//                }
+//            }
+//        });
 //    }
 }
