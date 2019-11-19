@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
@@ -26,6 +27,7 @@ public class Fragment2 extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    View fragent_View;
 
     private OnFragmentInteractionListener mListener;
 
@@ -51,6 +53,13 @@ public class Fragment2 extends Fragment {
         return fragment;
     }
 
+    public void setupSomeText(String textToSetup){
+        if(isAdded()) {
+            TextView tv_to_use = fragent_View.findViewById(R.id.tv_to_use);
+            tv_to_use.setText(textToSetup);
+        }
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,11 +72,11 @@ public class Fragment2 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        fragent_View = inflater.inflate(R.layout.fragment_fragment2, container, false);
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fragment2, container, false);
+        return fragent_View;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
