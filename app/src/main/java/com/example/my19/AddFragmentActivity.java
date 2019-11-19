@@ -30,6 +30,7 @@ public class AddFragmentActivity extends AppCompatActivity implements Fragment1.
                     fTrans.add(R.id.frgmCont, frag1);
                 }
                 i++;
+                // fTrans.addToBackStack(null);
                 fTrans.commit();
             }
         });
