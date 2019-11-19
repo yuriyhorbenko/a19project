@@ -10,8 +10,6 @@ import androidx.fragment.app.FragmentTransaction;
 
 public class AddFragmentActivity extends AppCompatActivity implements Fragment1.OnFragmentInteractionListener, Fragment2.OnFragmentInteractionListener {
 
-    Fragment2 frag2;
-    FragmentTransaction fTrans;
     int i = 0;
 
     @Override
@@ -23,7 +21,7 @@ public class AddFragmentActivity extends AppCompatActivity implements Fragment1.
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fTrans = getSupportFragmentManager().beginTransaction();
+                FragmentTransaction fTrans = getSupportFragmentManager().beginTransaction();
                 if ((i % 2) == 0) {
                     Fragment2 frag2 = new Fragment2();
                     fTrans.add(R.id.frgmCont, frag2);
