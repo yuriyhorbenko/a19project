@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -30,6 +31,8 @@ public class Fragment1 extends Fragment {
     private String mParam1;
     private String mParam2;
     Context ctx;
+    View fragment_view;
+    Integer position;
 
     private OnFragmentInteractionListener mListener;
 
@@ -55,12 +58,23 @@ public class Fragment1 extends Fragment {
         return fragment;
     }
 
+
+    public static Fragment1 newInstance(Integer position) {
+        Fragment1 fragment = new Fragment1();
+        Bundle args = new Bundle();
+        args.putInt("position", position);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            if (getArguments().containsKey("position")) {
+                position = getArguments().getInt("position");
+            }
         }
     }
 
@@ -68,15 +82,19 @@ public class Fragment1 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View fragment_view = inflater.inflate(R.layout.fragment_fragment1, container, false);
+        fragment_view = inflater.inflate(R.layout.fragment_fragment1, container, false);
         ctx = getActivity();
         Button button = fragment_view.findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(ctx,"Fragment button!",Toast.LENGTH_LONG).show();
+                Toast.makeText(ctx, "Fragment button!", Toast.LENGTH_LONG).show();
             }
         });
+        if (position != null) {
+            TextView title = fragment_view.findViewById(R.id.title);
+            title.setText("Fragment " + position);
+        }
         return fragment_view;
     }
 
