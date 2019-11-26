@@ -1,6 +1,7 @@
 package com.example.my19.ShopClasses;
 
 import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -23,7 +24,7 @@ public class NotificationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_notification);
         int small_icon = R.drawable.ic_launcher_foreground;
         Intent notificationIntent = new Intent(this, PagerActivity.class);
-     //   NotificationChannel channel = new NotificationChannel(NOTIFICATION_CHANNEL_ID, NOTIFICATION_CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT);
+        NotificationChannel channel = new NotificationChannel(NOTIFICATION_CHANNEL_ID, NOTIFICATION_CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT);
 
         Notification.Builder mBuilder =
                 (Notification.Builder) new Notification.Builder(this, NOTIFICATION_CHANNEL_ID)
@@ -34,13 +35,13 @@ public class NotificationActivity extends AppCompatActivity {
                         .setOnlyAlertOnce(true)
                         .setColor(Color.RED)
                         .setWhen(System.currentTimeMillis())
-                      //  .setChannelId(NOTIFICATION_CHANNEL_ID)
+                        .setChannelId(NOTIFICATION_CHANNEL_ID)
                         .setContentText("У вас новое сообщение");
 
         PendingIntent resultPendingIntent = PendingIntent.getActivity(getApplicationContext(), 1, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         mBuilder.setContentIntent(resultPendingIntent);
         NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-     //   mNotificationManager.createNotificationChannel(channel);
+        mNotificationManager.createNotificationChannel(channel);
         mNotificationManager.notify(1, mBuilder.build());
     }
 }

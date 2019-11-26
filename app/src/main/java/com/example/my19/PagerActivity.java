@@ -62,6 +62,7 @@ public class PagerActivity extends FragmentActivity implements Fragment1.OnFragm
 
         @Override
         public Fragment getItem(int position) {
+
             return Fragment1.newInstance(position);
         }
 
@@ -70,10 +71,10 @@ public class PagerActivity extends FragmentActivity implements Fragment1.OnFragm
             return PAGE_COUNT;
         }
 
-//        @Override
-//        public CharSequence getPageTitle(int position) {
-//            return "Title " + position;
-//        }
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return "Title " + position;
+        }
 
     }
 
