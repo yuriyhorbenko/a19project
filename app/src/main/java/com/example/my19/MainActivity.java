@@ -13,8 +13,6 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.my19.ShopClasses.NotificationActivity;
-
 public class MainActivity extends AppCompatActivity {
     EditText textObj;
     TextView textObjToSetup;
@@ -44,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
                 }
 
-                Intent myIntent = new Intent(ctx, NotificationActivity.class);
+                Intent myIntent = new Intent(ctx, MapsActivity.class);
                 //myIntent.putExtra("text_to_get",text_to_use);
                 startActivity(myIntent);
 //                String text_to_use = textObj.getText().toString();

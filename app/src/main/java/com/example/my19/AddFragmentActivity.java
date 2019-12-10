@@ -13,6 +13,10 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 
 import okhttp3.Call;
@@ -126,7 +130,7 @@ public class AddFragmentActivity extends AppCompatActivity implements Fragment1.
         OkHttpClient client = new OkHttpClient();
 
         Request request = new Request.Builder()
-                .url("https://auto.ria.com/newauto_blocks/marka/models?lang_id=2&category_id=1&marka_id=9")
+                .url("http://api.openweathermap.org/data/2.5/forecast?id=524901&apiKey=f5ccd5593530197ec84c593c71c9aa59")
                 .build();
 
 
@@ -142,7 +146,13 @@ public class AddFragmentActivity extends AppCompatActivity implements Fragment1.
                     throw new IOException("Unexpected code " + response);
 
                 } else {
-                    // do something wih the result
+                  String response_str = response.body().string();
+                    try {
+                        JSONObject responce_obj = new JSONObject(response_str);
+                        JSONArray resp_list =responce_obj.getJSONArray("list");
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         });
